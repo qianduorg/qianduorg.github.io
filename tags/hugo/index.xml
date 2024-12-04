@@ -1,0 +1,922 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>千度 – Hugo</title><link>https://qiandu.org/tags/hugo/</link><description>Recent content in Hugo on 千度</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 15 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://qiandu.org/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Hugo搭建网站最完整的教程</title><link>https://qiandu.org/blog/10000/</link><pubDate>Sun, 15 Oct 2023 00:00:00 +0000</pubDate><guid>https://qiandu.org/blog/10000/</guid><description>
+&lt;p>&lt;a href="https://gohugo.io/" target="_blank" rel="nofollow noopener">Hugo&lt;/a>是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的框架，具有速度快、易于使用和开发灵活的特点。Hugo 支持Markdown 语法，我们可以将自己的文章写成Markdown 的格式，放在我们用Hugo 创建的博客系统中，从而展示给他人。&lt;/p>
+&lt;p>但Hugo对于新手来说会不太友好。所以千度将Hugo的完整从安装部署到开发的完整教程写下来分享给我的朋友们。&lt;/p>
+&lt;h2>Hugo 安装&lt;span class="hx-absolute -hx-mt-20" id="hugo-安装">&lt;/span>
+&lt;a href="#hugo-%e5%ae%89%e8%a3%85" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>在Windows 中安装Hugo&lt;span class="hx-absolute -hx-mt-20" id="在windows-中安装hugo">&lt;/span>
+&lt;a href="#%e5%9c%a8windows-%e4%b8%ad%e5%ae%89%e8%a3%85hugo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>首先安装choco 包管理器，需要在&lt;strong>管理员权限&lt;/strong>下运行cmd，执行如下命令，一般情况下，网络没有问题，即可安装成功：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">powershell -NoProfile -ExecutionPolicy unrestricted -Command &lt;span class="s2">&amp;#34;iex ((new-object net.webclient).DownloadString(&amp;#39;https://chocolatey.org/install.ps1&amp;#39;))&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 设置环境变量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SET &lt;span class="nv">PATH&lt;/span>&lt;span class="o">=&lt;/span>%PATH%&lt;span class="p">;&lt;/span>%ALLUSERSPROFILE%&lt;span class="se">\c&lt;/span>hocolatey&lt;span class="se">\b&lt;/span>in&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>然后使用choco 安装 hugo：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 墙内安装可能较慢&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">choco&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">hugo&lt;/span> &lt;span class="n">-confirm&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>在MacOs 中安装Hugo&lt;span class="hx-absolute -hx-mt-20" id="在macos-中安装hugo">&lt;/span>
+&lt;a href="#%e5%9c%a8macos-%e4%b8%ad%e5%ae%89%e8%a3%85hugo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>使用brew 命令安装：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">brew install hugo&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>在Linux 中安装Hugo&lt;span class="hx-absolute -hx-mt-20" id="在linux-中安装hugo">&lt;/span>
+&lt;a href="#%e5%9c%a8linux-%e4%b8%ad%e5%ae%89%e8%a3%85hugo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>在Linux 中可以使用snap 命令来安装，执行下面命令：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">snap install hugo&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>如果你的Linux 是Ubuntu 版本，也可是使用apt 来安装，但是apt 安装的hugo 可能不是最新版的，这样会对一些hugo 主题的使用有所限制。&lt;/p>
+&lt;p>这种情况下我们可以到&lt;a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="nofollow noopener">hugo 的github 仓库&lt;/a> 中下载安装包来安装hugo，我们可以下载一个deb 包，然后使用如下命令安装：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">dpkg -i &amp;lt;package.deb&amp;gt;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>检查Hugo 是否安装成功&lt;span class="hx-absolute -hx-mt-20" id="检查hugo-是否安装成功">&lt;/span>
+&lt;a href="#%e6%a3%80%e6%9f%a5hugo-%e6%98%af%e5%90%a6%e5%ae%89%e8%a3%85%e6%88%90%e5%8a%9f" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>不管在哪种系统中安装Hugo，最后我们都可以使用下面命令查看Hugo 是否安装成功：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>&amp;gt;&amp;gt;&amp;gt; hugo version
+hugo v0.136.5-46cccb021b windows/amd64 BuildDate=2024-10-24T12:26:27Z VendorInfo=gohugoio&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>检查go与Hugo环境版本信息&lt;span class="hx-absolute -hx-mt-20" id="检查go与hugo环境版本信息">&lt;/span>
+&lt;a href="#%e6%a3%80%e6%9f%a5go%e4%b8%8ehugo%e7%8e%af%e5%a2%83%e7%89%88%e6%9c%ac%e4%bf%a1%e6%81%af" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmd" data-lang="cmd">&lt;span class="line">&lt;span class="cl">#go 版本
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">go version go1.11.5 linux/amd64
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#版本和环境详细信息
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hugo env
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Hugo Static Site Generator v0.54.0 linux/amd64 BuildDate: 2019-02-22T08:11:04Z
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">GOOS=&lt;span class="s2">&amp;#34;linux&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">GOARCH=&lt;span class="s2">&amp;#34;amd64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">GOVERSION=&lt;span class="s2">&amp;#34;go1.11.5&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h2>快速开始Hugo&lt;span class="hx-absolute -hx-mt-20" id="快速开始hugo">&lt;/span>
+&lt;a href="#%e5%bf%ab%e9%80%9f%e5%bc%80%e5%a7%8bhugo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>使用Hugo创建博客&lt;span class="hx-absolute -hx-mt-20" id="使用hugo创建博客">&lt;/span>
+&lt;a href="#%e4%bd%bf%e7%94%a8hugo%e5%88%9b%e5%bb%ba%e5%8d%9a%e5%ae%a2" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmd" data-lang="cmd">&lt;span class="line">&lt;span class="cl">#新建一个新的工程
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hugo new site myblogName
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#这个命令会创建一个名为myblog 的目录，这就是博客的根目录。目录结构如下：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── archetypes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│   └── default.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── config.toml # 博客站点的配置文件
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── content # 博客文章所在目录
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── layouts # 网站布局
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── static # 一些静态内容
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── themes # 博客主题
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#下载官网主题放到 …/blog/themes/目录下
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">cd&lt;/span> themes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/vjeantet/hugo-theme-casper.git casper
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">#下载下来的主题会放在themes目录中：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── hugo-theme-bootstrap4-blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── CHANGELOG.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── LICENSE.txt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── README.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── archetypes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── assets
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── exampleSite # 本主题示例内容
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span>   ├── content # 示例博客文章
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> │   &lt;span class="p">|&lt;/span>-- static
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> │   &lt;span class="p">|&lt;/span>-- config.toml # 本主题配置
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── i18n
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── images
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── layouts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── package-lock.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── package.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── screenshot.png
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── source
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── theme.toml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── webpack.config.js&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>Hugo目录介绍&lt;span class="hx-absolute -hx-mt-20" id="hugo目录介绍">&lt;/span>
+&lt;a href="#hugo%e7%9b%ae%e5%bd%95%e4%bb%8b%e7%bb%8d" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>...
+├── config // 模板需要的内容语料
+| ├── default
+| | ├── config.toml
+| | └── config.cn.toml
+| | └── config.en.toml
+| | └── footer.cn.toml
+| | └── footer.en.toml
+| | └── ...
+├── content // 内容部分，日常多由运营同学管理维护
+| ├── en // 国际化支持
+| | ├── posts // 内置默认的博客（post)类型资讯
+| | | ├── post-01.md
+| | | ├── post-02.md
+| | └── release // 新增的 release 类型资讯
+| | | ├── release-01.md
+| | | └── release-02.md
+| ├── cn
+| | ├── posts
+| | | ├── post-01.md
+| | | ├── post-02.md
+| | └── release
+| | | ├── release-01.md
+| | | └── release-02.md
+...
+├── themes // 站点的主题
+| ├── nebula-theme // 主题名
+| | ├── layout // 模板
+| | | ├── _default // 默认的模板
+| | | | ├── baseof.html // 渲染的种子页面定义
+| | | | ├── list.html // 默认博客 post 类型资讯 - 列表页的使用模板页面
+| | | | ├── single.html // 默认博客 post 类型资讯 - 详情页使用模板页面
+| | | ├── partials // 复用的模板片段
+| | | | ├── head.html
+| | | | ├── footer.html
+| | | | ├── menus.html
+| | | | ├── ...
+| | | ├── index.html // 首页（&amp;#39;/&amp;#39;) 默认会使用的模板
+| | | ├── section
+| | | | ├── release.html // 新增资讯类型 release 渲染时使用的模板页面 - 发布历史页面
+| | | | ├── news.html // 新增资讯类型 news 渲染时使用的模板页面 - 媒体新闻页面
+...&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>到此hugo即可算安装完成，让我们继续学习&lt;/p>
+&lt;h2>Hugo命令大全&lt;span class="hx-absolute -hx-mt-20" id="hugo命令大全">&lt;/span>
+&lt;a href="#hugo%e5%91%bd%e4%bb%a4%e5%a4%a7%e5%85%a8" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Hugo常用命令&lt;span class="hx-absolute -hx-mt-20" id="hugo常用命令">&lt;/span>
+&lt;a href="#hugo%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>#编译生成静态文件并输出到public目录
+hugo
+#编译生成静态文件并启动web服务
+hugo server
+#或
+hugo server --bind=&amp;#34;0.0.0.0&amp;#34;
+#创建文章
+hugo new index.md
+#在content/文件夹可以看到，此时多了一个markdown格式的文件index.md，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。
+#创建一个新的文章，指定文章路径、名称和文件扩展名。
+hugo new post/my-article.md
+#启动开发服务器，并包括草稿（draft）文章在内。
+hugo server -D
+#生成静态网站文件，包括草稿（draft）文章在内。
+hugo -D
+#生成静态网站文件之前清除缓存。
+hugo --gc
+#生成静态网站文件之前清除缓存并压缩代码。
+hugo --gc --minify
+#将生成的网站文件部署到指定的部署目标，如 GitHub Pages、Netlify 等。
+hugo deploy&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>常用参数&lt;span class="hx-absolute -hx-mt-20" id="常用参数">&lt;/span>
+&lt;a href="#%e5%b8%b8%e7%94%a8%e5%8f%82%e6%95%b0" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code> --bind=&amp;#34;127.0.0.1&amp;#34; #服务监听IP地址；
+-p, --port=1313 #服务监听端口；
+-w, --watch[=true] #监听站点目录，发现文件变更自动编译；
+-D, --buildDrafts #包括被标记为draft的文章；
+-E, --buildExpired #包括已过期的文章；
+-F, --buildFuture #包括将在未来发布的文章；
+-b, --baseURL=&amp;#34;www.datals.com&amp;#34; #服务监听域名；
+--log[=false]: #开启日志；
+--logFile=&amp;#34;/var/log/hugo.log&amp;#34;: #log输出路径；
+-t, --theme=&amp;#34;&amp;#34; #指定主题；
+-v, --verbose[=false]: #输出详细信息&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>组合使用方法&lt;span class="hx-absolute -hx-mt-20" id="组合使用方法">&lt;/span>
+&lt;a href="#%e7%bb%84%e5%90%88%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>hugo server -t hyde --buildDrafts --baseURL=http://www.yourname.com --bind=0.0.0.0 --port=80 -w&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>-t hyde #使用hyde主题，如果使用-t 选择了主题会将当前默认的主题覆盖；
+--buildDrafts #参数将生成被标记为草稿的页面，是否发布：hugo 会忽略所有通过 draft: true 标记为草稿的文件。必须改为 draft: false 才会编译进 HTML 文件。
+--baseURL=http://www.yourname.com #站点监听域名
+--bind=0.0.0.0 #监听全部网段
+--port=80 #服务监听端口
+-w #如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行hugo server，方便我们进行修改。 &lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>hugo命令使用方法详解&lt;span class="hx-absolute -hx-mt-20" id="hugo命令使用方法详解">&lt;/span>
+&lt;a href="#hugo%e5%91%bd%e4%bb%a4%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95%e8%af%a6%e8%a7%a3" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>执行hugo命令，站点目录下会新建文件夹public/，生成的所有静态网站页面都会存储到这个目录，
+如果使用Github pages来作为博客的Host，你只需要将public/里的文件上传就可以。
+如果使用nginx作为web服务配置root dir 指向public/ 即可；&lt;/p>
+&lt;h2>编写博客文章&lt;span class="hx-absolute -hx-mt-20" id="编写博客文章">&lt;/span>
+&lt;a href="#%e7%bc%96%e5%86%99%e5%8d%9a%e5%ae%a2%e6%96%87%e7%ab%a0" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>你只需要按照Markdown 的格式编写自己的文章，让后将写好的文章放在&lt;code>myblog/content/posts&lt;/code>，hugo 就会读取到这片文章，并将这片文章展示在比的博客中。&lt;/p>
+&lt;p>与普通Markdown 文章不一样的地方是，你需要在文章的开头写入如下结构的内容，这些内容包含在三杠线之间，在三杠线下边就是Markdown 的正文了：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>---
+文章属性内容
+---
+Markdown 正文&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>这些内容会被hugo 解析，作为当前文章的一些属性，常用的属性如下：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>---
+title: &amp;#34;文章标题&amp;#34; # 文章标题
+author: &amp;#34;作者&amp;#34; # 文章作者
+description : &amp;#34;描述信息&amp;#34; # 文章描述信息
+date: 2015-09-28 # 文章编写日期
+lastmod: 2015-04-06 # 文章修改日期
+tags = [ # 文章所属标签
+&amp;#34;文章标签1&amp;#34;,
+&amp;#34;文章标签2&amp;#34;
+]
+categories = [ # 文章所属标签
+&amp;#34;文章分类1&amp;#34;,
+&amp;#34;文章分类2&amp;#34;,
+]
+keywords = [ # 文章关键词
+&amp;#34;Hugo&amp;#34;,
+&amp;#34;static&amp;#34;,
+&amp;#34;generator&amp;#34;,
+]
+next: /tutorials/github-pages-blog # 下一篇博客地址
+prev: /tutorials/automated-deployments # 上一篇博客地址
+---&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>比如我们编写了这样一篇文章，文件名为my-first.md：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>---
+title: &amp;#34;我的第一篇博客&amp;#34;
+author: &amp;#34;我是作者&amp;#34;
+description : &amp;#34;这是描述信息&amp;#34;
+date: 2018-09-18
+lastmod: 2018-09-26
+tags : [
+&amp;#34;我的博客标签&amp;#34;,
+]
+categories : [
+&amp;#34;我的博客分类&amp;#34;,
+]
+keywords : [
+&amp;#34;我的博客关键字&amp;#34;,
+]
+---
+这里是Markdown 正文&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>我们将&lt;code>myblog/content/posts&lt;/code> 目录中的其它文章删除，只留我们自己的这篇文章：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── my-first.md &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>使用&lt;code>hugo server&lt;/code> 重启博客服务，打开地址网址可以看到现在的博客中，只有我们自己写的文章：&lt;/p>
+&lt;h2>Hugo 的配置文件&lt;span class="hx-absolute -hx-mt-20" id="hugo-的配置文件">&lt;/span>
+&lt;a href="#hugo-%e7%9a%84%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>博客的配置文件可以根据自己的需要修改，我们来看下&lt;code>Bootstrap v4&lt;/code> 主题的配置文件，这些配置属性通过应为并不难理解。&lt;/p>
+&lt;p>配置文件中属性的内容我做了修改，并添加了中文注释。&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Hugo 属性设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 网站地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">baseurl&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;https://localhost:1313/&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 网站语言&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">languageCode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;en-us&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 网站title&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">title&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;我的博客&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 主题的名字，这个要跟myblog/themes 目录中的子目录的目录名一致&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">theme&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;hugo-theme-bootstrap4-blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># home/category/tag 页面显示的文章数 (Default: 10)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">paginate&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">5&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># home/category/tag 页面用于摘要的字数 (Default: 70)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">summaryLength&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">50&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># optionally override the site&amp;#39;s footer with custom copyright text&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># copyright = &amp;#34;Except where otherwise noted, content on this site is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/).&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#googleAnalytics = &amp;#34;UA-123-45&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#disqusShortname = &amp;#34;XYW&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 博客链接的路径格式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>permalinks&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">posts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;/:year/:month/:title/&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">page&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;/:slug/&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 顶部栏&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[[&lt;/span>menu.navbar&lt;span class="o">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;首页&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;http://localhost:1313&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 侧边栏，可以写多个&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[[&lt;/span>menu.sidebar&lt;span class="o">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;新浪&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;https://www.sina.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[[&lt;/span>menu.sidebar&lt;span class="o">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Github&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;https://github.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Theme 属性设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>params&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Site author&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">author&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;作者名&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># homepage 页描述信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">description&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;我的博客站点&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Show header (default: true)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#header_visible = true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Format dates with Go&amp;#39;s time formatting&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">date_format&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Mon Jan 02, 2006&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># verification string for Google Webmaster Tools&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#google_verify_meta = &amp;#34;BAi57DROASu4b2mkVNA_EyUsobfA7Mq8BmSg7Rn-Zp9&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># verification string for Bing Webmaster Tools&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#bing_verify_meta = &amp;#34;3DA353059F945D1AA256B1CD8A3DA847&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># verification string for Yandex Webmaster Tools&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#yandex_verify_meta = &amp;#34;66b077430f35f04a&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Optionally display a message about the site&amp;#39;s use of cookies, which may be&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># required for your site in the European Union. Set the parameter below to a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># page where the user can get more information about cookies, either on your&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># site or externally, for example:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#cookie_consent_info_url = &amp;#34;/cookie-information/&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#cookie_consent_info_url = &amp;#34;http://cookiesandyou.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># show sharing icons on pages/posts (default: true)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#sharingicons = true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Display post summaries instead of content in list templates (default: true)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#truncate = true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Disable the use of sub-resource integrity on CSS/JS assets (default: false)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Useful if you&amp;#39;re using a CDN or other host where you can&amp;#39;t control cache headers&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#disable_sri = false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">[&lt;/span>params.sidebar&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Optional about block for sidebar (can be Markdown)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">about&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;我的博客[简单示例](http://localhost:1313/).&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 侧边栏显示最近几条文章 (Default: 5)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#num_recent_posts = 2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">[&lt;/span>params.social&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Optional, used for attribution in Twitter cards (ideally not a person&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># for example: nytimes, flickr, NatGeo, etc).&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># See: https://dev.twitter.com/cards/types/summary-large-image&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">twitter&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;username&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Default content language for Hugo 0.17&amp;#39;s multilingual support (default is &amp;#34;en&amp;#34;)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># See: https://github.com/spf13/hugo/blob/master/docs/content/content/multilingual.md&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#DefaultContentLanguage = &amp;#34;en&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Languages to render&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#[languages.en]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#[languages.bg]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Bulgarian date format is dd.mm.yyyy&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#date_format = &amp;#34;02.01.2006&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># vim: ts=2 sw=2 et&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>我们使用以上配置文件，再次启动服务即可&lt;/p>
+&lt;h2>9、将博客部署在Git&lt;span class="hx-absolute -hx-mt-20" id="9将博客部署在git">&lt;/span>
+&lt;a href="#9%e5%b0%86%e5%8d%9a%e5%ae%a2%e9%83%a8%e7%bd%b2%e5%9c%a8git" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>建好自己的博客后，需要将其部署在公网，才能让别人访问。有两种方法：&lt;/p>
+&lt;ul>
+&lt;li>购买自己的域名和服务器，将博客部署在上面。&lt;/li>
+&lt;li>将博客托管在github。&lt;/li>
+&lt;li>将博客托管在其他如cloudface分发平台&lt;/li>
+&lt;/ul>
+&lt;p>这里我们介绍第2中方式。&lt;/p>
+&lt;h3>9.1、准备要部署的内容&lt;span class="hx-absolute -hx-mt-20" id="91准备要部署的内容">&lt;/span>
+&lt;a href="#91%e5%87%86%e5%a4%87%e8%a6%81%e9%83%a8%e7%bd%b2%e7%9a%84%e5%86%85%e5%ae%b9" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>要想讲博客部署在github，首先得有一个github 账号。&lt;/p>
+&lt;p>然后需要在github 上创建一个仓库，用于存放我们的博客系统。&lt;/p>
+&lt;p>我们创建的仓库的名字应该是这种格式&amp;quot;&lt;code>账户名.github.io&lt;/code>&amp;quot;，比如我创建的仓库的名字为&amp;quot;&lt;code>codeshellme.github.io&lt;/code>&amp;quot;。&lt;/p>
+&lt;p>要向仓库中存放的内容，使用&lt;code>hugo&lt;/code> 命令生成的。在myblog 目录下，运行&lt;code>hugo&lt;/code> 命令：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&amp;gt;&amp;gt;&amp;gt; hugo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span> EN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-------------------+-----
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Pages &lt;span class="p">|&lt;/span> &lt;span class="m">14&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Paginator pages &lt;span class="p">|&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Non-page files &lt;span class="p">|&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Static files &lt;span class="p">|&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Processed images &lt;span class="p">|&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Aliases &lt;span class="p">|&lt;/span> &lt;span class="m">6&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Sitemaps &lt;span class="p">|&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Cleaned &lt;span class="p">|&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Total in &lt;span class="m">74&lt;/span> ms&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>执行成功后，会生成一个public 目录，这个目录中的内容，就是我们博客系统的所有内容，我们需要将这些内容存放在Git 仓库中。&lt;/p>
+&lt;h3>9.2、部署到Git&lt;span class="hx-absolute -hx-mt-20" id="92部署到git">&lt;/span>
+&lt;a href="#92%e9%83%a8%e7%bd%b2%e5%88%b0git" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>按照如下步骤将博客内容上传到Git 仓库，在public 目录下，依次执行下面的命令：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 初始化仓库&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 将所有内容添加到git&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 提交到git 本地&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s2">&amp;#34;我的博客第一次提交&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 关联到远程git，注意这里需要写你自己的git 地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git remote add origin https://github.com/yourname/yourname.github.io.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 推送到远程git&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push origin master&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>9.3、访问公网地址&lt;span class="hx-absolute -hx-mt-20" id="93访问公网地址">&lt;/span>
+&lt;a href="#93%e8%ae%bf%e9%97%ae%e5%85%ac%e7%bd%91%e5%9c%b0%e5%9d%80" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>经过上面的步骤，我们就将博客内容托管在了github。那么你的博客的地址将是这种格式：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;pre>&lt;code>https://仓库名字&lt;/code>&lt;/pre>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>例如博客地址就是：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">https://yourname.github.io&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>访问这个地址就可以访问我们的博客了。&lt;/p>
+&lt;p>如果以后我们写了新的博客，则需要再使用&lt;code>hugo&lt;/code> 命令生成新的内容，再将新的内容push 到Git 仓库就可以&lt;/p>
+&lt;h2>10，给博客添加评论功能&lt;span class="hx-absolute -hx-mt-20" id="10给博客添加评论功能">&lt;/span>
+&lt;a href="#10%e7%bb%99%e5%8d%9a%e5%ae%a2%e6%b7%bb%e5%8a%a0%e8%af%84%e8%ae%ba%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>博客有了评论功能才能跟读者互动，所以评论功能对一个博客来说也是必不可少的。&lt;/p>
+&lt;p>可用的&lt;code>评论系统插件&lt;/code> 有挺多的，比如：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://changyan.kuaizhan.com/" target="_blank" rel="nofollow noopener">畅言&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://livere.com/" target="_blank" rel="nofollow noopener">LiveRe&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/imsun/gitment" target="_blank" rel="nofollow noopener">gitment&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/imsun/gitmentps://gitalk.github.io/" target="_blank" rel="nofollow noopener">gitalk&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://valine.js.org/" target="_blank" rel="nofollow noopener">Valine&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>在这几个之中，我比较喜欢的&lt;code>Valine&lt;/code>，因为其它几个在评论的时候都需要读者登录账号，授权等等，我觉得这样比较麻烦，会让读者失去评论的兴趣。&lt;/p>
+&lt;p>而&lt;code>Valine&lt;/code> 不需要读者登录就可以对文章进行评论，而且简洁高效。下面我们主要介绍如何使用&lt;code>Valine&lt;/code> 来为我们的博客系统增加评论功能。&lt;/p>
+&lt;h3>10.1，注册登录leancloud 账号&lt;span class="hx-absolute -hx-mt-20" id="101注册登录leancloud-账号">&lt;/span>
+&lt;a href="#101%e6%b3%a8%e5%86%8c%e7%99%bb%e5%bd%95leancloud-%e8%b4%a6%e5%8f%b7" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>首先需要&lt;a href="https://leancloud.cn/dashboard/login.html#/signup" target="_blank" rel="nofollow noopener">注册&lt;/a>并&lt;a href="https://leancloud.cn/dashboard/login.html#/signin" target="_blank" rel="nofollow noopener">登录&lt;/a>一个leancloud 账号，登录账号之后，进入下一步。&lt;/p>
+&lt;h3>10.2，创建一个应用并记录&lt;code>App Id&lt;/code> 和&lt;code>App Key&lt;/code>&lt;span class="hx-absolute -hx-mt-20" id="102创建一个应用并记录app-id-和app-key">&lt;/span>
+&lt;a href="#102%e5%88%9b%e5%bb%ba%e4%b8%80%e4%b8%aa%e5%ba%94%e7%94%a8%e5%b9%b6%e8%ae%b0%e5%bd%95app-id-%e5%92%8capp-key" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>登录账号后，进入&lt;a href="https://leancloud.cn/dashboard/applist.html#/apps" target="_blank" rel="nofollow noopener">控制台&lt;/a>，点击&lt;code>创建应用&lt;/code>来创建一个应用&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10000/20200408220821864.png" alt="img" loading="lazy" />&lt;/p>
+&lt;p>应用创建好以后，进入刚刚创建的应用，点击左下角的&lt;code>设置&lt;/code>&amp;gt;&lt;code>应用Key&lt;/code>，就能看到你的&lt;code>APP ID&lt;/code>和&lt;code>APP Key&lt;/code>了：&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10000/20200408220922684.png" alt="img" loading="lazy" />&lt;/p>
+&lt;h3>10.3，创建两个存储&lt;span class="hx-absolute -hx-mt-20" id="103创建两个存储">&lt;/span>
+&lt;a href="#103%e5%88%9b%e5%bb%ba%e4%b8%a4%e4%b8%aa%e5%ad%98%e5%82%a8" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>因为&lt;code>评论&lt;/code>和&lt;code>文章阅读数统计&lt;/code>依赖于存储，所以要建立两个存储 &lt;code>Class&lt;/code>，分别命名为&lt;code>Counter&lt;/code> （用于计数功能）和 &lt;code>Comment&lt;/code>（用于评论功能）。&lt;/p>
+&lt;p>左边栏找到并点击 &lt;code>存储&lt;/code>，点击 &lt;code>创建Class&lt;/code>:&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10000/20200408221301802.png" alt="img" loading="lazy" />&lt;/p>
+&lt;h3>10.4，为应用添加安全域名&lt;span class="hx-absolute -hx-mt-20" id="104为应用添加安全域名">&lt;/span>
+&lt;a href="#104%e4%b8%ba%e5%ba%94%e7%94%a8%e6%b7%bb%e5%8a%a0%e5%ae%89%e5%85%a8%e5%9f%9f%e5%90%8d" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>左边栏点击&lt;code>设置&lt;/code>，找到&lt;code>安全中心&lt;/code>，点击后会看到&lt;code>安全域名&lt;/code>设置框，输入博客使用的域名，点击保存即可，比如填写的是：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="n">https&lt;/span>&lt;span class="err">:&lt;/span>&lt;span class="p">//&lt;/span>&lt;span class="n">yourname&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="py">github&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">io&lt;/span>&lt;span class="p">/&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10000/20200408221806881.png" alt="img" loading="lazy" />&lt;/p>
+&lt;p>到这里为止，&lt;code>leancloud&lt;/code> 账号的设置工作才算完成。接下来我们来看如何使用&lt;code>Valine&lt;/code> 评论系统。&lt;/p>
+&lt;h2>11，使用Valine 评论系统&lt;span class="hx-absolute -hx-mt-20" id="11使用valine-评论系统">&lt;/span>
+&lt;a href="#11%e4%bd%bf%e7%94%a8valine-%e8%af%84%e8%ae%ba%e7%b3%bb%e7%bb%9f" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>这里我写一个简单&lt;code>html&lt;/code> 页面，来演示如何使用&lt;code>Valine&lt;/code>，代码如下：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Valine 评论测试&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- 引入Valine js 脚本 --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">src&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#39;https://unpkg.com/valine/dist/Valine.min.js&amp;#39;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">h2&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>下面就是Valine 评论系统&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">h2&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">hr&lt;/span> &lt;span class="p">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span> &lt;span class="na">id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;vcomments&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">new&lt;/span> &lt;span class="nx">Valine&lt;/span>&lt;span class="p">({&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;#vcomments&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">appId&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;xxx&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 这里填写 10.2 节我们得到的App Id
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">appKey&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;yyy&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1">// 这里填写 10.2 节我们得到的App Key
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="nx">notify&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="kc">false&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">verify&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">avatar&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;robohash&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">placeholder&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;在这里评论&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">html&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>这里面有一些&lt;code>Valine&lt;/code> 参数需要解释一下：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>参数&lt;/th>
+&lt;th>作用&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>appId&lt;/td>
+&lt;td>这是在 10.2 节得到的App Id&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>appKey&lt;/td>
+&lt;td>这是在 10.2 节得到的App Key&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>notify&lt;/td>
+&lt;td>用于控制是否开启邮件通知功能&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>verify&lt;/td>
+&lt;td>用于控制是否开启评论验证码功能&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>avatar&lt;/td>
+&lt;td>用于配置评论项中用户头像样式&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>placeholder&lt;/td>
+&lt;td>评论框的提示符&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>可以参见&lt;a href="https://valine.js.org/configuration.html" target="_blank" rel="nofollow noopener">这里&lt;/a>查看更多配置项。&lt;/p>
+&lt;p>然后将上面的&lt;code>html&lt;/code> 代码放在&lt;code>Apache&lt;/code> 中（也可以是其它&lt;code>Web Server&lt;/code>），从浏览器中访问这个&lt;code>html&lt;/code> 页面，是这样的：&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10000/20200408225530192.png" alt="img" loading="lazy" />&lt;/p>
+&lt;p>我们就可以在这里评论了。&lt;/p>
+&lt;p>我们可以进入下面的页面，对这些评论内容进行管理，比如删除评论：&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10000/2020040822592251.png" alt="img" loading="lazy" />&lt;/p>
+&lt;h2>12，在Hugo 博客中使用Valine&lt;span class="hx-absolute -hx-mt-20" id="12在hugo-博客中使用valine">&lt;/span>
+&lt;a href="#12%e5%9c%a8hugo-%e5%8d%9a%e5%ae%a2%e4%b8%ad%e4%bd%bf%e7%94%a8valine" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>有些&lt;code>Hugo&lt;/code> 主题就自带了&lt;code>Valine&lt;/code> 评论功能，我们只需要在配置文件&lt;code>config.toml&lt;/code> 中配置就可以使用。&lt;/p>
+&lt;p>一般配置代码就是下面的样子：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="no">params.valine&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">enable&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">true&lt;/span> &lt;span class="c"># 打开评论功能&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">appId&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;xxx&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">appKey&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;yyy&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">notify&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">verify&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">avatar&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;robohash&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">placeholder&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;评论一下，说明你来过~&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">visitor&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">true&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>但是，有些&lt;code>Hugo&lt;/code> 主题并没自带&lt;code>Valine&lt;/code> 评论功能，这就需要我们自己在&lt;code>Hugo&lt;/code> 框架中加入&lt;code>Valine&lt;/code> 代码。&lt;/p>
+&lt;p>比如，我们本篇文章中使用的&lt;code>hugo-theme-bootstrap4-blog&lt;/code> 主题，就没有&lt;code>Valine&lt;/code> 评论的功能。&lt;/p>
+&lt;p>我们需要稍微了解一下&lt;code>hugo-theme-bootstrap4-blog&lt;/code> 主题的&lt;code>代码结构&lt;/code>和&lt;code>语法&lt;/code>，才知道在哪里添加怎样的&lt;code>Valine&lt;/code> 代码。&lt;/p>
+&lt;p>下面跟着我的步骤，为&lt;code>hugo-theme-bootstrap4-blog&lt;/code> 主题添加&lt;code>Valine&lt;/code> 评论功能。&lt;/p>
+&lt;h3>12.1，编写comments.html 文件&lt;span class="hx-absolute -hx-mt-20" id="121编写commentshtml-文件">&lt;/span>
+&lt;a href="#121%e7%bc%96%e5%86%99commentshtml-%e6%96%87%e4%bb%b6" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>编写代码，文件名为&lt;code>comments.html&lt;/code>，并将代码放入&lt;code>themes/hugo-theme-bootstrap4-blog/layouts/partials/&lt;/code> 目录中，代码如下（如果看不懂也没有关系，照着做就行）：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">{{ if and .IsPage (ne .Params.comment false) -}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- valine --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {{- if .Site.Params.valine.enable -}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c">&amp;lt;!-- id 将作为查询条件 --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {{- if .Site.Params.valine.visitor -}}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">span&lt;/span> &lt;span class="na">id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;{{ .RelPermalink | relURL }}&amp;#34;&lt;/span> &lt;span class="na">class&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;leancloud_visitors&amp;#34;&lt;/span> &lt;span class="na">data-flag-title&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;{{ .Title }}&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">span&lt;/span> &lt;span class="na">class&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;post-meta-item-text&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>文章阅读量 &lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">span&lt;/span> &lt;span class="na">class&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;leancloud-visitors-count&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>0&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">span&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {{- end }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">div&lt;/span> &lt;span class="na">id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;vcomments&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">div&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">src&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;//cdn1.lncld.net/static/js/3.0.4/av-min.js&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">src&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#39;//unpkg.com/valine/dist/Valine.min.js&amp;#39;&lt;/span>&lt;span class="p">&amp;gt;&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">script&lt;/span> &lt;span class="na">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;text/javascript&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">new&lt;/span> &lt;span class="nx">Valine&lt;/span>&lt;span class="p">({&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">el&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;#vcomments&amp;#39;&lt;/span> &lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">appId&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;{{ .Site.Params.valine.appId }}&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">appKey&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;{{ .Site.Params.valine.appKey }}&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">notify&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{{&lt;/span> &lt;span class="p">.&lt;/span>&lt;span class="nx">Site&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">Params&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">valine&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">notify&lt;/span> &lt;span class="p">}},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">verify&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{{&lt;/span> &lt;span class="p">.&lt;/span>&lt;span class="nx">Site&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">Params&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">valine&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">verify&lt;/span> &lt;span class="p">}},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">avatar&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="s1">&amp;#39;{{ .Site.Params.valine.avatar }}&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">placeholder&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s1">&amp;#39;{{ .Site.Params.valine.placeholder }}&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">visitor&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="p">{{&lt;/span> &lt;span class="p">.&lt;/span>&lt;span class="nx">Site&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">Params&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">valine&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">visitor&lt;/span> &lt;span class="p">}}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">script&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> {{- end }}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{{- end }}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;h3>12.2，使用comments.html 文件&lt;span class="hx-absolute -hx-mt-20" id="122使用commentshtml-文件">&lt;/span>
+&lt;a href="#122%e4%bd%bf%e7%94%a8commentshtml-%e6%96%87%e4%bb%b6" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>在&lt;code>themes/hugo-theme-bootstrap4-blog/layouts/_default/single.html&lt;/code> 文件中加入下面代码，引入&lt;code>comments.html&lt;/code> 文件：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">{{ partial &amp;#34;comments.html&amp;#34; . }}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>你在&lt;code>single.html&lt;/code> 的什么位置加入这行代码，&lt;code>Valine 评论区&lt;/code>就在页面的什么位置。&lt;/p>
+&lt;h3>12.3，修改配置文件&lt;span class="hx-absolute -hx-mt-20" id="123修改配置文件">&lt;/span>
+&lt;a href="#123%e4%bf%ae%e6%94%b9%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>在配置文件&lt;code>config.toml&lt;/code>中加入下面配置项：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="no">params.valine&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">enable&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">true&lt;/span> &lt;span class="c"># 打开评论功能&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">appId&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;xxx&amp;#39;&lt;/span> &lt;span class="c"># 填写正确的appId&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">appKey&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;yyy&amp;#39;&lt;/span> &lt;span class="c"># 填写正确的appKey&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">notify&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">verify&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">avatar&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;robohash&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">placeholder&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s1">&amp;#39;评论一下，说明你来过~&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">visitor&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">true&lt;/span> &lt;span class="c"># 开启计数功能&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>重启博客系统，访问博客中的文章，可见文章中就出现了&lt;code>Valine 评论区&lt;/code>：&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10000/20200408232726339.png" alt="img" loading="lazy" />&lt;/p>
+&lt;p>到此为止，我们就在&lt;code>Hugo&lt;/code> 博客中加入了评论功能。&lt;/p>
+&lt;h2>Hugo丰富工具集&lt;span class="hx-absolute -hx-mt-20" id="hugo丰富工具集">&lt;/span>
+&lt;a href="#hugo%e4%b8%b0%e5%af%8c%e5%b7%a5%e5%85%b7%e9%9b%86" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>除了强大的内容管理系统外，Hugo 还有很多很好用的内置模板及工具函数，满足不同需求情况下提升搭建效率，抽象实现细节，更专注于站点的搭建，诸如：&lt;/p>
+&lt;ul>
+&lt;li>资源类型列表的分页模板 - &lt;a href="https://gohugo.io/templates/pagination/" target="_blank" rel="nofollow noopener">Pagination&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>这个针对只有列表页的需求，比如博客，发版历史，新闻类等，好用的分页模板，轻松的就帮你完成了。&lt;/p>
+&lt;ul>
+&lt;li>资源 RSS 模板 - &lt;a href="https://gohugo.io/templates/rss/" target="_blank" rel="nofollow noopener">RSS&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>对于资讯型的站点必不可少，官方已内置了默认的 rss 模板，只需要添加一行代码，即可搞定 rss，当然还支持个性化定制。&lt;/p>
+&lt;ul>
+&lt;li>各类内容及字符串处理工具函数 - &lt;a href="https://gohugo.io/functions/" target="_blank" rel="nofollow noopener">Functions&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>这个不用多说，对应程序中的各类常见的字符串替换，Hugo 都有着良好的支持，同时它还支持类似 Pipe 管道的方式，将处理内容以 | 分隔层层传递下去，就像我们在 Linux 输入的命令一样。&lt;/p>
+&lt;ul>
+&lt;li>好用的 CLI 工具&lt;/li>
+&lt;/ul>
+&lt;p>内置了 http server 方便本地开发，同时又能将整个站点打包成纯静态的资源，方便了对于部署的操作和维护成本，可以一键初始化并启动项目，开箱即用的感觉，上手容易。&lt;/p>
+&lt;ul>
+&lt;li>好用的内容管理工具
+&lt;ul>
+&lt;li>迅速提取博客内容的目录导航 - &lt;a href="https://gohugo.io/content-management/toc/#readout" target="_blank" rel="nofollow noopener">TableOfContents&lt;/a> 使用此工具函数，会根据你当前的文章内容，提取目录概要，节省了生成锚点内容的时间。&lt;/li>
+&lt;li>便捷获取文章的概览内容 - &lt;a href="https://gohugo.io/content-management/summaries/" target="_blank" rel="nofollow noopener">Summary&lt;/a>&lt;/li>
+&lt;li>便捷获取文章的图片资源 - &lt;a href="https://gohugo.io/content-management/image-processing/" target="_blank" rel="nofollow noopener">Image Processing&lt;/a>&lt;/li>
+&lt;li>自定义 URL 的规则 - &lt;a href="https://gohugo.io/content-management/urls/" target="_blank" rel="nofollow noopener">URL Management&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>以上便是我们在实践中，有接触过的一些 Hugo 比较好用的工具，当然它提供的远比这个更丰富，更多工具可查看&lt;a href="https://gohugo.io/about/" target="_blank" rel="nofollow noopener">参考官方文档&lt;/a>。&lt;/p>
+&lt;h2>常用的git命令&lt;span class="hx-absolute -hx-mt-20" id="常用的git命令">&lt;/span>
+&lt;a href="#%e5%b8%b8%e7%94%a8%e7%9a%84git%e5%91%bd%e4%bb%a4" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">add&lt;/span> &lt;span class="p">.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//添加所有修改或更新的文件到 Git 仓库
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">commit&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">m&lt;/span> &lt;span class="s2">&amp;#34;Update&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//提交你的更改
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">push&lt;/span> &lt;span class="nx">origin&lt;/span> &lt;span class="nx">master&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//推送你的更改到 GitHub 仓库
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">init&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//初始化一个仓库：这将在当前目录创建一个新的Git仓库。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">clone&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">仓库URL&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//克隆仓库：这将复制远程仓库的内容到本地。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">add&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">文件名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//添加文件到暂存区：将指定的文件添加到暂存区，准备提交。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">commit&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">m&lt;/span> &lt;span class="s2">&amp;#34;提交信息&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//提交更改：将暂存区的更改提交到版本历史中。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">status&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//查看状态：查看工作目录和暂存区的状态。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">log&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//查看提交历史：显示提交历史记录，包括作者、日期和提交信息。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">checkout&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">分支名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//切换分支：切换到指定的分支。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">branch&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">新分支名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//创建分支：创建一个新的分支。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">merge&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">目标分支名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//合并分支：将目标分支的更改合并到当前分支。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">pull&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//拉取远程更改：从远程仓库拉取最新更改并合并到当前分支。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">push&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//推送更改：将本地提交推送到远程仓库。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">rm&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">文件名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//删除文件：从版本控制中删除文件。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">mv&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">旧文件名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">新文件名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//重命名文件：对文件进行重命名，并将更改提交到版本控制。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">remote&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">v&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//查看远程仓库：查看与本地仓库关联的远程仓库。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">git&lt;/span> &lt;span class="nx">tag&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="nx">标签名&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//创建标签：创建一个标签，通常用于标记版本。
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>好了，今天就先总结到这吧~下期再见！&lt;/p></description></item></channel></rss>

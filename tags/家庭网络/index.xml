@@ -1,0 +1,113 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>千度 – 家庭网络</title><link>https://qiandu.org/tags/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/</link><description>Recent content in 家庭网络 on 千度</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 18 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://qiandu.org/tags/%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>家庭网络ipv6使用指南：Nginx Proxy Manager反向代理及证书配置</title><link>https://qiandu.org/blog/10010/</link><pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate><guid>https://qiandu.org/blog/10010/</guid><description>
+&lt;p>家里的网络虽然有ipv6，但是站点比较多，总不能记下每个ipv6地址，还有部分环境配置动态域名比较繁琐。所以根据 &lt;a href="https://www.youtube.com/watch?v=TTlrlqoUh18" target="_blank" rel="nofollow noopener">YouTube Vedio Talk&lt;/a>大佬的指南，对家庭ipv6的反向代理实现只有ipv6的情况下使用地址+端口号访问。&lt;/p>
+&lt;h3>说明&lt;span class="hx-absolute -hx-mt-20" id="说明">&lt;/span>
+&lt;a href="#%e8%af%b4%e6%98%8e" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>1.已经开启了ipv6并且测试ipv6地址能正常访问openwrt。&lt;/p>
+&lt;p>2.需要自备一个域名。&lt;/p>
+&lt;p>2.Nginx Proxy Manager反向代理理论与端口转发Socat不能在同一个地址。 &lt;em>例如：我的端口转发Socat在主路由openwrt。(10.10.10.1)。Nginx Proxy Manager反向代理在pve的lxc容器下建的docker(10.10.10.2)&lt;/em>&lt;/p>
+&lt;p>3.这个方法适用多个一个虚拟机多个环境，如果只是有一个docker那么可以直接安装Lucky大吉解析一个ip+端口理论也是行的。&lt;/p>
+&lt;h3>环境部署&lt;span class="hx-absolute -hx-mt-20" id="环境部署">&lt;/span>
+&lt;a href="#%e7%8e%af%e5%a2%83%e9%83%a8%e7%bd%b2" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>1.在主路由openwrt iStore 安装 Socat端口转发&lt;/p>
+&lt;p>2.在主路由openwrt iStore 安装 Lucky大吉 动态域名解析与同步&lt;/p>
+&lt;p>3.docker安装portainer，我使用的汉化版。安装成功后docker地址+9000就可以访问到portainer。&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">docker&lt;/span> &lt;span class="n">run&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">d&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">restart&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">always&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;portainer&amp;#34;&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="mi">9000&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">9000&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">v&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">run&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">docker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sock&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">run&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">docker&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sock&lt;/span> &lt;span class="mi">6053537&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">portainer&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">ce&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>4.安装Nginx Proxy Manager反向代理，在portainer里面创建堆栈内容如下。&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">version&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;3.8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">services&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">app&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">image&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;jc21/nginx-proxy-manager:latest&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">restart&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">unless&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">stopped&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ports&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># These ports are in format &amp;lt;host-port&amp;gt;:&amp;lt;container-port&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="s1">&amp;#39;8080:80&amp;#39;&lt;/span> &lt;span class="c1"># Public HTTP Port 需要更改的位置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="s1">&amp;#39;4443:443&amp;#39;&lt;/span> &lt;span class="c1"># Public HTTPS Port 需要更改的位置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="s1">&amp;#39;81:81&amp;#39;&lt;/span> &lt;span class="c1"># Admin Web Port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Add any other Stream port you want to expose&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># - &amp;#39;21:21&amp;#39; # FTP&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">environment&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Mysql/Maria connection parameters:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">DB_MYSQL_HOST&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;db&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">DB_MYSQL_PORT&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">3306&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">DB_MYSQL_USER&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;npm&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">DB_MYSQL_PASSWORD&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;npm&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">DB_MYSQL_NAME&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;npm&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Uncomment this if IPv6 is not enabled on your host&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># DISABLE_IPV6: &amp;#39;true&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">volumes&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="o">./&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">data&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="o">./&lt;/span>&lt;span class="n">letsencrypt&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">etc&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">letsencrypt&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">depends_on&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="n">db&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">db&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">image&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;jc21/mariadb-aria:latest&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">restart&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">unless&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">stopped&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">environment&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MYSQL_ROOT_PASSWORD&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;npm&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MYSQL_DATABASE&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;npm&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MYSQL_USER&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;npm&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MYSQL_PASSWORD&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;npm&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">MARIADB_AUTO_UPGRADE&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s1">&amp;#39;1&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">volumes&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">-&lt;/span> &lt;span class="o">./&lt;/span>&lt;span class="n">mysql&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">lib&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">mysql&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>创建好后部署,成功后lxc容器+81即可访问Nginx Proxy Manager。&lt;/p>
+&lt;p>默认账户密码：&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">Email&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">admin&lt;/span>&lt;span class="nd">@example.com&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Password&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">changeme&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65f5cbfac2499.webp" alt="img" loading="lazy" />&lt;/p>
+&lt;p>portainer、Nginx Proxy Manager及数据库&lt;/p>
+&lt;h3>端口转发&lt;span class="hx-absolute -hx-mt-20" id="端口转发">&lt;/span>
+&lt;a href="#%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>在openwrt主路Socat设置端口转发，添加两个端口443转到4443和80转到8080&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65f5d01dd6917.webp" alt="img" loading="lazy" />&lt;/p>
+&lt;p>端口转发设置&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65f5cec4c1988.webp" alt="img" loading="lazy" />&lt;/p>
+&lt;p>端口转发设置&lt;/p>
+&lt;h3>动态域名解析&lt;span class="hx-absolute -hx-mt-20" id="动态域名解析">&lt;/span>
+&lt;a href="#%e5%8a%a8%e6%80%81%e5%9f%9f%e5%90%8d%e8%a7%a3%e6%9e%90" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65f5d7c4b62b9.webp" alt="img" loading="lazy" />
+需要解析的ipv6地址&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65fba82477665.webp" alt="img" loading="lazy" />&lt;/p>
+&lt;p>域名解析类型AAAA&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65f5d3c6a17ca.webp" alt="img" loading="lazy" />&lt;/p>
+&lt;p>Lucky大吉 设置 解析的域名要填写泛域名&lt;/p>
+&lt;h3>Nginx Proxy Manager配置ssl证书&lt;span class="hx-absolute -hx-mt-20" id="nginx-proxy-manager配置ssl证书">&lt;/span>
+&lt;a href="#nginx-proxy-manager%e9%85%8d%e7%bd%aessl%e8%af%81%e4%b9%a6" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>证书有两种配置方式：一种是提前申请号上传，另外一种是使用Nginx Proxy Manager代申请&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65fa9880a1f24.png" alt="img" loading="lazy" />&lt;/p>
+&lt;p>需要提前到cloudflare里面创建dns解析的api&lt;/p>
+&lt;h3>域名添加&lt;span class="hx-absolute -hx-mt-20" id="域名添加">&lt;/span>
+&lt;a href="#%e5%9f%9f%e5%90%8d%e6%b7%bb%e5%8a%a0" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65fba8f09389a.webp" alt="img" loading="lazy" />&lt;/p>
+&lt;p>需要提前到cloudflare里面创建dns解析的api&lt;/p>
+&lt;p>&lt;img src="https://qiandu.org/images/bolg/10010/65fba8f0938bd.webp" alt="img" loading="lazy" />&lt;/p>
+&lt;p>添加域名&lt;/p>
+&lt;p>接下来就可以使用解析成功的域名加上端口号4443访问内网地址了。建议配置一个导航 这样会更方便。&lt;/p>
+&lt;h3>注意事项&lt;span class="hx-absolute -hx-mt-20" id="注意事项">&lt;/span>
+&lt;a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>1.pve虚拟机的内网地址需要填写：https&lt;/p>
+&lt;p>2.如果有使用Home Assistant需要打开内网地址下面的第三个选项Websockets Support，不然是没办法访问的。&lt;/p></description></item></channel></rss>

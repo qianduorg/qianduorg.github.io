@@ -7,7 +7,120 @@
  *3D海洋效应与 Canvas2D
  * 您可以更改注释 "效果属性" 下的属性
  */
+ function createDonutAnimation(containerId, gradientColors) {
+
+    let $canvas = $(`#${containerId} canvas`),
+        canvas = $canvas[0],
+        renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+            alpha: true
+        });
+
+    renderer.setSize($canvas.width(), $canvas.height());
+    renderer.setPixelRatio(window.devicePixelRatio || 1);
+
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(45, $canvas.width() / $canvas.height(), 0.1, 1000);
+    camera.position.z = 500;
+
+    let shape = new THREE.TorusBufferGeometry(115, 13, 60, 160);
+
+    let gradientCanvas = document.createElement('canvas');
+    gradientCanvas.width = 256; // 根据需要调整大小
+    gradientCanvas.height = 1;   // 高为1以创建线性渐变
+    let ctx = gradientCanvas.getContext('2d');
+
+    // 创建渐变
+    let gradient = ctx.createLinearGradient(0, 0, gradientCanvas.width, 0);
+    gradient.addColorStop(0, '#0064ff');     // 蓝色
+    gradient.addColorStop(0.4, '#09b5eb');    // 青色
+    gradient.addColorStop(0.6, '#0064ff');    // 在青色和蓝色之间的过渡
+    gradient.addColorStop(0.9, '#7c04e5');     // 紫色过渡
+    gradient.addColorStop(0, '#7c04e5');      // 紫色
+
+    // 填充渐变
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, gradientCanvas.width, gradientCanvas.height);
+
+    // 创建纹理
+    let texture = new THREE.CanvasTexture(gradientCanvas);
+
+    let material = new THREE.MeshPhongMaterial({
+        map: texture,
+        shininess: 20,
+        opacity: .96,
+        transparent: true
+    });
+    let donut = new THREE.Mesh(shape, material);
+
+    scene.add(donut);
+
+    let lightTop = new THREE.DirectionalLight(0xFFFFFF, 0.3);
+    lightTop.position.set(0, 200, 0);
+    scene.add(lightTop);
+
+    let frontTop = new THREE.DirectionalLight(0xFFFFFF, 0.4);
+    frontTop.position.set(0, 0, 300);
+    scene.add(frontTop);
+
+    scene.add(new THREE.AmbientLight(0xbac5d9));
+
+    let mat = Math.PI,
+        speed = Math.PI / 120,
+        forwards = 1;
+
+    function twist(geometry, amount) {
+        const positionAttribute = geometry.attributes.position;
+        const array = positionAttribute.array;
+
+        for (let i = 0; i < array.length; i += 3) {
+            const x = array[i]; // x
+            const y = array[i + 1]; // y
+            const z = array[i + 2]; // z
+            
+            const quaternion = new THREE.Quaternion();
+            quaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), (Math.PI / 180) * (x / amount));
+            
+            // 应用旋转
+            const vector = new THREE.Vector3(x, y, z);
+            vector.applyQuaternion(quaternion);
+            
+            array[i] = vector.x;     // 更新 x
+            array[i + 1] = vector.y; // 更新 y
+            array[i + 2] = vector.z; // 更新 z
+        }
+        
+        positionAttribute.needsUpdate = true; // 标记需要更新
+    }
+
+    var render = function () {
+        requestAnimationFrame(render);
+
+        donut.rotation.x -= speed * forwards;
+
+        mat -= speed;
+
+        if (mat <= 0) {
+            mat = Math.PI;
+            forwards *= -1;
+        }
+
+        twist(shape, (mat >= Math.PI / 2 ? -280 : 280) * forwards);
+
+        renderer.render(scene, camera);
+    };
+
+    render();
+}
 document.addEventListener('DOMContentLoaded', (event) => {
+    if (document.getElementById('footer')) {
+        createDonutAnimation('footer');
+    }
+    if (document.getElementById('logo')) {
+        createDonutAnimation('logo');
+    }
+
     if(document.querySelector(".content")) {
         const images = document.querySelector("article .content"); // 根据需要选择您文章中的图片
         // if (!canvas) {
@@ -22,62 +135,82 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     if(document.querySelector(".item")) {
         document.querySelectorAll('.item > a').forEach(item => {
-            item.addEventListener('click', function(event) {
+            item.addEventListener('click', function (event) {
                 const parentLi = this.parentElement;
+        
                 // 移除同级兄弟元素的 class
                 const siblings = parentLi.parentElement.children; // 获取同级元素
                 Array.from(siblings).forEach(sibling => {
                     if (sibling !== parentLi) { // 排除当前元素
                         const siblingAnchor = sibling.querySelector('a'); // 获取兄弟 li 下的 a 元素
                         if (siblingAnchor) {
-                            siblingAnchor.classList.remove('hx-text-primary-800', 'hx-bg-primary-100'); // 移除类
+                            siblingAnchor.classList.remove('item-active'); // 移除类
                         }
                     }
                 });
-                // console.log(parentLi)
-                // parentLi.classList.toggle('open');
-
+        
                 // 移除父li的a的class
-                this.classList.add('hx-text-primary-800', 'hx-bg-primary-100');
-
+                this.classList.add('item-active');
+        
                 // 阻止默认的跳转行为
                 event.preventDefault();
-
+        
                 // 获取目标锚点
                 const targetId = this.getAttribute('href');
                 const escapedId = CSS.escape(targetId.substring(1)); // 去掉 '#' 并转义字符
                 const targetElement = document.querySelector(`#${escapedId}`); // 使用安全的选择器
-
+        
                 if (targetElement) {
                     // 计算滚动的位置，减去导航的高度
                     const navbarHeight = document.querySelector('.nav-container').offsetHeight; // 替换为您的导航选择器
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
-
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight - 16; // 16 是你可以自定义的偏移量
+        
                     // 平滑滚动到目标位置
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
-                
-                // 点击子li
-                // parentLi.querySelectorAll('.sub-item').forEach(subItem => {
-                //     subItem.querySelector('a').addEventListener('click', function(event) {
-                //         event.stopPropagation(); // 阻止事件冒泡
-                //         parentLi.classList.add('open');
-                //         this.classList.add('hx-text-primary-800', 'hx-bg-primary-100');
-                //     });
-                // });
-
-                // this.classList.toggle('hx-text-primary-800', 'hx-bg-primary-100'); // 添加class给父级
             });
         });
-        // document.querySelectorAll('.item .hextra-sidebar-collapsible-button').forEach(item => {
-        //     item.addEventListener('click', function(event) {
-        //         const parentLi = this.parentElement.parentElement;
-        //         parentLi.classList.toggle('open');
+        
+        // document.addEventListener('scroll', function() {
+        //     // 获取所有的目标元素
+        //     document.querySelectorAll('.item > a').forEach(item => {
+        //         // 获取目标锚点
+        //         const targetId = item.getAttribute('href');
+        //         const escapedId = CSS.escape(targetId.substring(1)); // 去掉 '#' 并转义字符
+        //         const targetElement = document.querySelector(`#${escapedId}`); // 使用安全的选择器
+        
+        //         if (targetElement) {
+        //             // 计算目标元素的位置信息
+        //             const navbarHeight = document.querySelector('.nav-container').offsetHeight; // 替换为您的导航选择器
+        //             const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY; // 计算目标元素的绝对位置
+                    
+        //             // 检查目标元素是否滚动到可视区域
+        //             if (targetPosition >= navbarHeight && targetPosition <= window.innerHeight - navbarHeight) {
+        //                 // 移除同级兄弟元素的 class
+        //                 const parentLi = item.parentElement;
+        //                 const siblings = parentLi.parentElement.children; // 获取同级元素
+        //                 Array.from(siblings).forEach(sibling => {
+        //                     const siblingAnchor = sibling.querySelector('a'); // 获取兄弟 li 下的 a 元素
+        //                     if (siblingAnchor) {
+        //                         siblingAnchor.classList.remove('item-active'); // 移除类
+        //                     }
+        //                 });
+        
+        //                 // 当前元素高亮
+        //                 item.classList.add('item-active');
+        //             } else {
+        //                 // 如果不在可视区域内，则移除高亮
+        //                 item.classList.remove('item-active');
+        //             }
+        //         }
         //     });
         // });
+        
+        
+        
     }
 
     if(document.querySelector(".index-search-dropdown")) {
@@ -104,6 +237,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         dropdown.classList.remove('show');
                     }
                 }, 100); // 设置一定的延迟，让下拉可以保持显示
+            });
+            // 在 inputField 上添加键盘事件监听
+            const inputField = document.querySelectorAll('.form-input'); // 假设输入框在 inputField 内
+            inputField.forEach(item => {
+                item.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') { // 检查是否是回车键
+                        event.preventDefault(); // 防止表单默认提交
+                        const form = item.parentElement;
+                        let query = '';
+                        let url = '';
+                        query = encodeURIComponent(item.value); // 编码输入
+                        url = form.action; // 构造请求地址
+                        console.log('XX', item, item.value, form, query, url);
+                        // const form = select.parentElement; // 找到包含这个 select 的 form
+                        window.open(url + query, '_blank'); // 在新标签页中打开 URL
+                    }
+                });
             });
         });
 
@@ -938,4 +1088,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
        });
     }
+    
 });

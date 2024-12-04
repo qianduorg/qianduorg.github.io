@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>千度 – 自签ipa</title><link>https://qiandu.org/tags/%E8%87%AA%E7%AD%BEipa/</link><description>Recent content in 自签ipa on 千度</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 18 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://qiandu.org/tags/%E8%87%AA%E7%AD%BEipa/index.xml" rel="self" type="application/rss+xml"/><item><title>使用windows将AltStore安装到ios——自签ipa应用</title><link>https://qiandu.org/blog/10009/</link><pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate><guid>https://qiandu.org/blog/10009/</guid><description>
+&lt;p>自签应用可以体验到无广告，加入特殊功能的ios软件，缺点是周期比较短，个人用户只能签3个应用，AltStore本身一个，就剩下两个。而企业证书需要花钱购买，而申请的话比较复杂且不是很稳定。如果自用，我还是比较推荐自签，无成本且不是多难。&lt;/p>
+&lt;h3>自签后能实现什么功能？&lt;span class="hx-absolute -hx-mt-20" id="自签后能实现什么功能">&lt;/span>
+&lt;a href="#%e8%87%aa%e7%ad%be%e5%90%8e%e8%83%bd%e5%ae%9e%e7%8e%b0%e4%bb%80%e4%b9%88%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>1.应用多开&lt;/p>
+&lt;p>2.增加特殊功能，例如微信去朋友圈广告，防撤回等。YouTube视频下载等等，取决于ipa软件。&lt;/p>
+&lt;h3>windows自签软件下载&lt;span class="hx-absolute -hx-mt-20" id="windows自签软件下载">&lt;/span>
+&lt;a href="#windows%e8%87%aa%e7%ad%be%e8%bd%af%e4%bb%b6%e4%b8%8b%e8%bd%bd" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>1.下载安装最新版本的iTunes和iCloud并安装&lt;/p>
+&lt;p>&lt;strong>iTunes 下载:&lt;/strong> &lt;a href="https://www.apple.com/itunes/download/win64" target="_blank" rel="nofollow noopener">Windows 64-bit: iTunes&lt;/a>
+&lt;strong>iCloud 下载:&lt;/strong> &lt;a href="https://updates.cdn-apple.com/2020/windows/001-39935-20200911-1A70AA56-F448-11EA-8CC0-99D41950005E/iCloudSetup.exe" target="_blank" rel="nofollow noopener">Windows 64-bit: iCloud&lt;/a>&lt;/p>
+&lt;p>2.下载AltStore并安装&lt;/p>
+&lt;p>&lt;a href="https://cdn.altstore.io/file/altstore/altinstaller.zip" target="_blank" rel="nofollow noopener">AltStore&lt;/a>&lt;/p>
+&lt;h3>安装并签名&lt;span class="hx-absolute -hx-mt-20" id="安装并签名">&lt;/span>
+&lt;a href="#%e5%ae%89%e8%a3%85%e5%b9%b6%e7%ad%be%e5%90%8d" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>1.解压 AltInstaller.zip并运行setup.exe。在windows任务栏搜索找到altserver以管理员身份运行。&lt;/p>
+&lt;p>2.使用数据线连接设备，解锁设备并同意信任计算机设备。&lt;/p>
+&lt;p>3.打开iTunes局域网wifi与手机同步选项。&lt;/p>
+&lt;p>3.在右下角的任务栏中找到altserver图标，单击选择Install AltStore。&lt;/p>
+&lt;p>4.输入账号密码进行身份验证。&lt;/p>
+&lt;p>5.等待几秒钟，软件将会被安装到设备。在设备的设置-&amp;gt;通用-&amp;gt;vpn与设备管理-&amp;gt;信任你的id&lt;/p>
+&lt;p>6.ios16以上设备需要打开开发人员模式。在设置-&amp;gt;隐私与安全-&amp;gt;开发人员模式。启用开发者模式，设备会要求重启，重启完成后即可安装并签名ipa软件了。&lt;/p>
+&lt;h3>过期重签&lt;span class="hx-absolute -hx-mt-20" id="过期重签">&lt;/span>
+&lt;a href="#%e8%bf%87%e6%9c%9f%e9%87%8d%e7%ad%be" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>个人证书7天会过期，所以快到期前需要重签。重签还是打开三个软件，在打开iTunes同步功能的情况下，可以直接手机一键重签。如果重签失败可以使用设备连接电脑点击软件后面的天数即可。&lt;/p>
+&lt;h3>ipa破解软件推荐&lt;span class="hx-absolute -hx-mt-20" id="ipa破解软件推荐">&lt;/span>
+&lt;a href="#ipa%e7%a0%b4%e8%a7%a3%e8%bd%af%e4%bb%b6%e6%8e%a8%e8%8d%90" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;a href="https://t.me/PJAPKIOS" target="_blank" rel="nofollow noopener">破解软件 IOS Mac频道 🅥&lt;/a>
+&lt;a href="https://t.me/gekuGou" target="_blank" rel="nofollow noopener">iOS破解软件分享&lt;/a>&lt;/p></description></item></channel></rss>

@@ -1,0 +1,86 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>千度 – 异地组网</title><link>https://qiandu.org/tags/%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/</link><description>Recent content in 异地组网 on 千度</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 18 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://qiandu.org/tags/%E5%BC%82%E5%9C%B0%E7%BB%84%E7%BD%91/index.xml" rel="self" type="application/rss+xml"/><item><title>ipv6进阶之如何实现远程访问内网设备？</title><link>https://qiandu.org/blog/10008/</link><pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate><guid>https://qiandu.org/blog/10008/</guid><description>
+&lt;p>最近从lede固件更换immortalwrt总算告一段落了，今天总结第一期。&lt;/p>
+&lt;h3>说明&lt;span class="hx-absolute -hx-mt-20" id="说明">&lt;/span>
+&lt;a href="#%e8%af%b4%e6%98%8e" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>ipv6进阶：我是如何实现远程访问内网设备？ipv6进阶：我是如何实现远程访问内网设备？ipv6进阶：我是如何实现远程访问内网设备？ipv6进阶：我是如何实现远程访问内网设备？
+ipv6网络远程访问内网所有设备。以下教程只针对桥接拨号，openwrt主路由，个人编译的immortalwrt固件。其他网络情况请按需配置。以下openwrt插件均已编译在固件里面了。&lt;/p>
+&lt;p>GitHub去点一颗小星星&lt;a href="https://github.com/mrxie68/OpenWRT-CI/releases" target="_blank" rel="nofollow noopener">simWRT&lt;/a>&lt;/p>
+&lt;h3>网络环境介绍&lt;span class="hx-absolute -hx-mt-20" id="网络环境介绍">&lt;/span>
+&lt;a href="#%e7%bd%91%e7%bb%9c%e7%8e%af%e5%a2%83%e4%bb%8b%e7%bb%8d" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10008/66eeebe24016e.webp" alt="img" loading="lazy" />]&lt;/p>
+&lt;h3>主路由网口设置&lt;span class="hx-absolute -hx-mt-20" id="主路由网口设置">&lt;/span>
+&lt;a href="#%e4%b8%bb%e8%b7%af%e7%94%b1%e7%bd%91%e5%8f%a3%e8%ae%be%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10008/66ee7482e94f7.webp" alt="img" loading="lazy" />]&lt;/p>
+&lt;h3>解析方案&lt;span class="hx-absolute -hx-mt-20" id="解析方案">&lt;/span>
+&lt;a href="#%e8%a7%a3%e6%9e%90%e6%96%b9%e6%a1%88" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>我使用的是DDNS-Go+socat方案，首先需要在DDNS-Go上解析域名，在Cloudflare上购买一个域名，创建一个针对dns解析的api令牌，&lt;a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="nofollow noopener">创建令牌 -&amp;gt; 编辑区域 DNS (使用模板)&lt;/a>创建好令牌填写在DDNS-Go上面。&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10008/66ee778686e6b.png" alt="img" loading="lazy" />]&lt;/p>
+&lt;p>&lt;em>确保wan口已经获取到ipv6,图上是错误的删了一部分，要确保能使用ipv6地址访问到openwrt。&lt;/em>&lt;/p>
+&lt;p>使用Socat对ipv6进行所需端口转发，前面两个必须22看个人需求，如果需要远程ssh就打开。&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10008/66ee791190029.png" alt="img" loading="lazy" />]&lt;/p>
+&lt;p>使用Nginx Proxy Manager绑定内网ip并设置https。&lt;em>Nginx Proxy Manager在10.10.10.110并非主路由，是装在lxc容器docker里面&lt;/em>。Nginx Proxy Manager可以添加所有需要反代的内网域名即可。&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10008/66ee7e47b0e32.webp" alt="img" loading="lazy" />]&lt;/p>
+&lt;p>在防火墙下的通信规则里面放行4443端口。&lt;/p>
+&lt;p>&lt;a href="https://img.brain-hole.org/2024/09/21/66ee8093108d4.webp" target="_blank" rel="nofollow noopener">&lt;img src="https://qiandu.org/images/bolg/10008/66ee8093108d4.webp" alt="img" loading="lazy" />&lt;/a>&lt;/p>
+&lt;h3>如何访问&lt;span class="hx-absolute -hx-mt-20" id="如何访问">&lt;/span>
+&lt;a href="#%e5%a6%82%e4%bd%95%e8%ae%bf%e9%97%ae" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>使用反代域名加4443即可访问 例如内网openwrt:&lt;a href="https://openwrt.youname.com:4443/" target="_blank" rel="nofollow noopener">https://openwrt.youname.com:4443&lt;/a>&lt;/p>
+&lt;h3>预告&lt;span class="hx-absolute -hx-mt-20" id="预告">&lt;/span>
+&lt;a href="#%e9%a2%84%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>下一期将使用vpn建立隧道访问内网设备，可以防止ipv6解析出现问题导致无法访问的问题。&lt;/p></description></item><item><title>Tailscale异地组网：实现远程访问内网设备</title><link>https://qiandu.org/blog/10007/</link><pubDate>Sat, 18 Nov 2023 00:00:00 +0000</pubDate><guid>https://qiandu.org/blog/10007/</guid><description>
+&lt;p>在我们现在使用的网络中，远程访问家里的设备和公司内网已经成了常见需求，主流的方案有ipv4/ipv6方案，vpn隧道，vps中转等。Tailscale的组网方式相对简单，且不依赖公网。&lt;/p>
+&lt;h3>对比&lt;span class="hx-absolute -hx-mt-20" id="对比">&lt;/span>
+&lt;a href="#%e5%af%b9%e6%af%94" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>**IPv4/IPv6 公网：**IPv4 相对 IPv6 而言要简单得多，只需要配置动态 DDNS 解析和端口转发与放行即可。而 IPv6 则相对复杂许多，一般需要使用运营商的高级管理员账户自行开启 IPv6 功能，然后在光猫和主路由上进行相应的配置，才能获取到 IPv6 公网地址。接下来，还需要进行动态 DDNS 解析和端口转发与放行。&lt;/p>
+&lt;p>随着运营商逐步封锁高级管理员账户的权限，获取 IPv6 公网 IP 变得越来越复杂。&lt;/p>
+&lt;p>**Tailscale：**Tailscale 几乎不需要任何配置。只要安装客户端并登录账户，设备之间便能自动组网，无需担心 NAT 穿透、端口转发等问题。&lt;/p>
+&lt;p>**双层保障：**从安全性上讲，Tailscale 更加安全且简单，但在网速方面，公网 IP 通常要优于 Tailscale。&lt;/p>
+&lt;p>对我来说，小白才会做选择，而我选择全都要，哈哈！这种双重保障方式能够确保在某些场景下提供额外的可靠性。比如，当你不在家里时，可能需要对软路由进行升级或更新动态解析插件。如果此时 IPv6 解析出现问题，导致无法访问内网设备，Tailscale 就可以帮你顺利连接到内网，解决问题。&lt;/p>
+&lt;h3>安装与配置&lt;span class="hx-absolute -hx-mt-20" id="安装与配置">&lt;/span>
+&lt;a href="#%e5%ae%89%e8%a3%85%e4%b8%8e%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>在主路由上安装Tailscale，如果使用的是我编译的插件是自带Tailscale。由于我编译的很精简并不适用所有人，只以x86架构的机器上测试为准。提前注册好Tailscale账号，ssh连接到主路由执行下面命令。&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">opkg&lt;/span> &lt;span class="nx">update&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">wget&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">O&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="nx">tmp&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nx">luci&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">app&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">tailscale_1&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="mf">1.3&lt;/span>&lt;span class="nx">_all&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">ipk&lt;/span> &lt;span class="nx">https&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//github.com/asvow/luci-app-tailscale/releases/download/v1.1.3/luci-app-tailscale_1.1.3_all.ipk
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">wget&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="nx">O&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="nx">tmp&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nx">luci&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">i18n&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">tailscale&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">zh&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">cn_240923&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="mi">10793_&lt;/span>&lt;span class="nx">all&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">ipk&lt;/span> &lt;span class="nx">https&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="c1">//github.com/asvow/luci-app-tailscale/releases/download/v1.1.3/luci-i18n-tailscale-zh-cn_240923.10793_all.ipk
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">opkg&lt;/span> &lt;span class="nx">install&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="nx">tmp&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nx">luci&lt;/span>&lt;span class="o">-*-&lt;/span>&lt;span class="nx">tailscale&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">ipk&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>执行完命令在服务里面即可看到Tailscale，如果没有重启检查，如果还是没有就需要检查兼容性问题了。下面启动服务。&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10007/66f12020bf560.webp" alt="img" loading="lazy" />]
+启动相关配置后获取登录地址并绑定账号。&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">tailscale&lt;/span> &lt;span class="nx">up&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>打开子网路由，网段需要填写自己的网段。&lt;/p>
+&lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">tailscale&lt;/span> &lt;span class="nx">up&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nx">advertise&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">routes&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">10.10&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="mf">10.0&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="mi">24&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="nx">accept&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="nx">dns&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">false&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
+&lt;button
+class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
+title="Copy code"
+>
+&lt;div class="copy-icon group-[.copied]/copybtn:hx-hidden hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;div class="success-icon hx-hidden group-[.copied]/copybtn:hx-block hx-pointer-events-none hx-h-4 hx-w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;p>到网页端开启子网路由服务，并禁用密钥过期。&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10007/66f11fc1e988c.webp" alt="img" loading="lazy" />]&lt;/p>
+&lt;h3>添加接口设置防火墙&lt;span class="hx-absolute -hx-mt-20" id="添加接口设置防火墙">&lt;/span>
+&lt;a href="#%e6%b7%bb%e5%8a%a0%e6%8e%a5%e5%8f%a3%e8%ae%be%e7%bd%ae%e9%98%b2%e7%81%ab%e5%a2%99" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>创建一个网络接口名字tailscale协议是静态地址设备选择tailscale0，接下来在常规设置里面把ipv4改成网页控制台路由器分配的ip地址，子网掩码改成255.0.0.0保存就可以了。*子网互通要不要打开取决于自己，子网互通可以帮助远程设备访问路由器网络，比如你的路由器安装了某知名不可描述软件，当在手机端打开vpn时，不仅能访问家里的设备，还可以使用它提供的服务。*后期可能会加一篇另外一个插件加ipv6用这个的服务，不使用tailscale提供的子网互通是因为网络可能存在瓶颈，但是简单浏览网页应该不影响。&lt;/p>
+&lt;p>子网互通同时需要在主路由开启和网页端控制台开启。开启成功是不会显示感叹号提示的。先添加接口，子网互通才能开启。&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10007/66f123d1b72fd.webp" alt="img" loading="lazy" />]&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10007/66f123d006b8f.png" alt="img" loading="lazy" />]&lt;/p>
+&lt;h3>添加设备并访问&lt;span class="hx-absolute -hx-mt-20" id="添加设备并访问">&lt;/span>
+&lt;a href="#%e6%b7%bb%e5%8a%a0%e8%ae%be%e5%a4%87%e5%b9%b6%e8%ae%bf%e9%97%ae" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>直接在需要访问的设备上下载tailscale客户端并登录，登录需要使用与主路由上相同的账号，登录成功即可看到自己的设备在线，打开vpn,使用非局域网即可访问。内网如何访问，非局域网设备就如何访问就行。&lt;/p>
+&lt;p>[&lt;img src="https://qiandu.org/images/bolg/10007/66f12882d70ed.webp" alt="img" loading="lazy" />]&lt;/p></description></item></channel></rss>
