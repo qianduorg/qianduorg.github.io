@@ -461,8 +461,7 @@ title="Copy code"
 &lt;li>&lt;code>full&lt;/code> - 单词子串匹配。&lt;/li>
 &lt;/ul>
 &lt;blockquote>
-&lt;p>在默认的分词逻辑下，中文一句话就是一个“单词”&lt;/p>
-&lt;/blockquote>
+&lt;p>在默认的分词逻辑下，中文一句话就是一个“单词”&lt;/p>&lt;/blockquote>
 &lt;p>要从搜索索引中排除页面，更改 front matter 中的 &lt;code>excludeSearch: true&lt;/code>:&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
 &lt;div class="filename" dir="auto">content/docs/guide/configuration.md&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nn">---&lt;/span>&lt;span class="w">
@@ -542,8 +541,7 @@ title="Copy code"
 &lt;a href="#%e5%bc%95%e7%94%a8" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>带角标的块引用：&lt;/p>
 &lt;blockquote>
 &lt;p>Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br>
-— &lt;cite>Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/cite>&lt;/p>
-&lt;/blockquote>
+— &lt;cite>Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/cite>&lt;/p>&lt;/blockquote>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
 &lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">&lt;span class="k">&amp;gt; &lt;/span>&lt;span class="ge">Don&amp;#39;t communicate by sharing memory, share memory by communicating.&amp;lt;br&amp;gt;
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="ge">&lt;/span>&lt;span class="k">&amp;gt; &lt;/span>&lt;span class="ge">— &amp;lt;cite&amp;gt;Rob Pike[^1]&amp;lt;/cite&amp;gt;
@@ -797,10 +795,10 @@ title="Copy code"
 &lt;a href="#%e7%89%b9%e6%80%a7" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>文件名&lt;span class="hx-absolute -hx-mt-20" id="文件名">&lt;/span>
 &lt;a href="#%e6%96%87%e4%bb%b6%e5%90%8d" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>要向代码块添加文件名或标题，请设置 &lt;code>filename&lt;/code>：&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">```python {filename=&amp;#34;hello.py&amp;#34;}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def say_hello():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print(&amp;#34;Hello!&amp;#34;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">```&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
+&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">``&lt;span class="sb">`python {filename=&amp;#34;hello.py&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def say_hello():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb"> print(&amp;#34;Hello!&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">`&lt;/span>``&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
 &lt;button
 class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
 title="Copy code"
@@ -825,10 +823,10 @@ title="Copy code"
 &lt;h3>行号&lt;span class="hx-absolute -hx-mt-20" id="行号">&lt;/span>
 &lt;a href="#%e8%a1%8c%e5%8f%b7" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>如需设置行号，将 &lt;code>linenos&lt;/code> 设置为 &lt;code>table&lt;/code>，并将 &lt;code>linenostart&lt;/code> 设置为起始行号：&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">```python {linenos=table,linenostart=42}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def say_hello():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print(&amp;#34;Hello!&amp;#34;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">```&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
+&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">``&lt;span class="sb">`python {linenos=table,linenostart=42}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def say_hello():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb"> print(&amp;#34;Hello!&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">`&lt;/span>``&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
 &lt;button
 class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
 title="Copy code"
@@ -861,13 +859,13 @@ title="Copy code"
 &lt;h3>高亮行&lt;span class="hx-absolute -hx-mt-20" id="高亮行">&lt;/span>
 &lt;a href="#%e9%ab%98%e4%ba%ae%e8%a1%8c" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>显示高亮行，设置 &lt;code>hl_lines&lt;/code> 为行号：&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">```python {linenos=table,hl_lines=[2,4],linenostart=1,filename=&amp;#34;hello.py&amp;#34;}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def say_hello():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> print(&amp;#34;Hello!&amp;#34;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def main():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> say_hello()
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">```&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
+&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">``&lt;span class="sb">`python {linenos=table,hl_lines=[2,4],linenostart=1,filename=&amp;#34;hello.py&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def say_hello():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb"> print(&amp;#34;Hello!&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def main():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb"> say_hello()
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">`&lt;/span>``&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
 &lt;button
 class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
 title="Copy code"

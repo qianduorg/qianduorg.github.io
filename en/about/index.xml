@@ -489,8 +489,7 @@ title="Copy code"
 &lt;li>&lt;code>full&lt;/code> - Word substring matching.&lt;/li>
 &lt;/ul>
 &lt;blockquote>
-&lt;p>Under the default word segmentation logic, a Chinese sentence is a &amp;ldquo;word&amp;rdquo;&lt;/p>
-&lt;/blockquote>
+&lt;p>Under the default word segmentation logic, a Chinese sentence is a &amp;ldquo;word&amp;rdquo;&lt;/p>&lt;/blockquote>
 &lt;p>To exclude a page from the search index, change &lt;code>excludeSearch: true&lt;/code> in the front matter:&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
 &lt;div class="filename" dir="auto">content/docs/guide/configuration.md&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nn">---&lt;/span>&lt;span class="w">
@@ -570,8 +569,7 @@ title="Copy code"
 &lt;a href="#quote" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Block quote with superscript:&lt;/p>
 &lt;blockquote>
 &lt;p>Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br>
-— &lt;cite>Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/cite>&lt;/p>
-&lt;/blockquote>
+— &lt;cite>Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/cite>&lt;/p>&lt;/blockquote>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
 &lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">&lt;span class="k">&amp;gt; &lt;/span>&lt;span class="ge">Don&amp;#39;t communicate by sharing memory, share memory by communicating.&amp;lt;br&amp;gt;
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="ge">&lt;/span>&lt;span class="k">&amp;gt; &lt;/span>&lt;span class="ge">— &amp;lt;cite&amp;gt;Rob Pike[^1]&amp;lt;/cite&amp;gt;
@@ -825,10 +823,10 @@ title="Copy code"
 &lt;a href="#features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Filename&lt;span class="hx-absolute -hx-mt-20" id="filename">&lt;/span>
 &lt;a href="#filename" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>To add a filename or title to a code block, set &lt;code>filename&lt;/code>:&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">```python {filename=&amp;#34;hello.py&amp;#34;}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def say_hello():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#34;Hello!&amp;#34;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">```&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
+&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">``&lt;span class="sb">`python {filename=&amp;#34;hello.py&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def say_hello():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">print(&amp;#34;Hello!&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">`&lt;/span>``&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
 &lt;button
 class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
 title="Copy code"
@@ -853,10 +851,10 @@ title="Copy code"
 &lt;h3>Line Numbers&lt;span class="hx-absolute -hx-mt-20" id="line-numbers">&lt;/span>
 &lt;a href="#line-numbers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>To set line numbers, set &lt;code>linenos&lt;/code> to &lt;code>table&lt;/code>, and set &lt;code>linenostart&lt;/code> to the starting line number:&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">```python {linenos=table,linenostart=42}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def say_hello():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#34;Hello!&amp;#34;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">```&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
+&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">``&lt;span class="sb">`python {linenos=table,linenostart=42}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def say_hello():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">print(&amp;#34;Hello!&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">`&lt;/span>``&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
 &lt;button
 class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
 title="Copy code"
@@ -889,13 +887,13 @@ title="Copy code"
 &lt;h3>Highlight Lines&lt;span class="hx-absolute -hx-mt-20" id="highlight-lines">&lt;/span>
 &lt;a href="#highlight-lines" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Display highlighted lines, set &lt;code>hl_lines&lt;/code> to line numbers:&lt;/p>
 &lt;div class="hextra-code-block hx-relative hx-mt-6 first:hx-mt-0 hx-group/code">
-&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">```python {linenos=table,hl_lines=[2,4],linenostart=1,filename=&amp;#34;hello.py&amp;#34;}
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def say_hello():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#34;Hello!&amp;#34;)
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">def main():
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">say_hello()
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">```&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
+&lt;div class="filename" dir="auto">Markdown&lt;/div>&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">``&lt;span class="sb">`python {linenos=table,hl_lines=[2,4],linenostart=1,filename=&amp;#34;hello.py&amp;#34;}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def say_hello():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">print(&amp;#34;Hello!&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">def main():
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">say_hello()
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sb">`&lt;/span>``&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-8">
 &lt;button
 class="hextra-code-copy-btn hx-group/copybtn hx-transition-all active:hx-opacity-50 hx-bg-primary-700/5 hx-border hx-border-black/5 hx-text-gray-600 hover:hx-text-gray-900 hx-rounded-md hx-p-1.5 dark:hx-bg-primary-300/10 dark:hx-border-white/10 dark:hx-text-gray-400 dark:hover:hx-text-gray-50"
 title="Copy code"
