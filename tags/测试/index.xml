@@ -1,0 +1,22 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>千度 – 测试</title><link>https://qiandu.org/tags/%E6%B5%8B%E8%AF%95/</link><description>Recent content in 测试 on 千度</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 22 Aug 2025 17:50:00 +0800</lastBuildDate><atom:link href="https://qiandu.org/tags/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml"/><item><title>测试自动化部署</title><link>https://qiandu.org/blog/test-deployment/</link><pubDate>Fri, 22 Aug 2025 17:50:00 +0800</pubDate><guid>https://qiandu.org/blog/test-deployment/</guid><description>
+&lt;h2>🎯 测试目的&lt;span class="hx-absolute -hx-mt-20" id="-测试目的">&lt;/span>
+&lt;a href="#-%e6%b5%8b%e8%af%95%e7%9b%ae%e7%9a%84" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>这是一篇测试文章，用来验证Hugo网站的自动化部署是否正常工作。&lt;/p>
+&lt;h2>✅ 测试步骤&lt;span class="hx-absolute -hx-mt-20" id="-测试步骤">&lt;/span>
+&lt;a href="#-%e6%b5%8b%e8%af%95%e6%ad%a5%e9%aa%a4" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
+&lt;li>创建这篇文章&lt;/li>
+&lt;li>提交到Git&lt;/li>
+&lt;li>推送到GitHub&lt;/li>
+&lt;li>观察GitHub Actions是否自动触发&lt;/li>
+&lt;li>检查网站是否自动更新&lt;/li>
+&lt;/ol>
+&lt;h2>🚀 预期结果&lt;span class="hx-absolute -hx-mt-20" id="-预期结果">&lt;/span>
+&lt;a href="#-%e9%a2%84%e6%9c%9f%e7%bb%93%e6%9e%9c" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>如果一切正常：&lt;/p>
+&lt;ul>
+&lt;li>GitHub Actions会自动构建Hugo站点&lt;/li>
+&lt;li>将构建好的文件推送到公有库&lt;/li>
+&lt;li>网站会自动更新显示这篇文章&lt;/li>
+&lt;/ul>
+&lt;h2>📝 测试时间&lt;span class="hx-absolute -hx-mt-20" id="-测试时间">&lt;/span>
+&lt;a href="#-%e6%b5%8b%e8%af%95%e6%97%b6%e9%97%b4" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>创建时间：{{ .Date }}&lt;/p>
+&lt;hr>
+&lt;p>&lt;em>如果这篇文章出现在你的网站上，说明自动化部署配置成功！&lt;/em>&lt;/p></description></item></channel></rss>
